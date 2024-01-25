@@ -5,15 +5,15 @@ const logger = require("./middlewares/logger");
 const dotenv = require("dotenv");
 const globalErrorHandler = require("./controllers/errorCtrl");
 const AppError = require("./api_features/appError");
+const cors = require("cors");
 
 dotenv.config({ path: "./config.env" });
 
 const app = express();
 
 app.use(express.json());
-
+app.use(cors({ origin: '*' }));
 app.use(logger.myLogger);
-app.use(logger.reqTimeLog);
 
 if (process.env.NODE_ENVIRONMENT == "development") {
   app.use(morgan("dev"));
