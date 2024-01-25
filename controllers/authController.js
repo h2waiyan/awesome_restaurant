@@ -21,7 +21,7 @@ exports.signup = catchAsync(async (req, res) => {
     { expiresIn: process.env.JWT_EXPIRES_IN }
   );
 
-  res.status(201).json({
+  return res.status(201).json({
     status: "success",
     token,
     data: {
